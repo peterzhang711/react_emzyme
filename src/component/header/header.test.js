@@ -1,15 +1,31 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, configure } from 'enzyme'
 import Header from './index'
+import { findByTestAtrr } from '../../Util'
+import Adapter from 'enzyme-adapter-react-16';
 
 
-describe ('Header compo', ()=> {
+const setUp = (props={}) => {
+    const component = shallow(<Header {...props}/>)
+    return component
+}
+
+configure({adapter: new Adapter()});
+describe ('header compo', () => {
+
+    let component
+    beforeEach (() => {
+        component = setUp()
+    });
 
     test('should render with no error', () => {
-
-        const component = shallow(<Header />)
-        const wrapper = component.find('.logo')
+        const wrapper = findByTestAtrr(component,'headerComponent')
         expect (wrapper.length).toBe(1)
-    })
+            })
 
+    
 })
+
+
+
+
