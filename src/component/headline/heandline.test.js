@@ -1,7 +1,8 @@
 import React from 'react'
 import { shallow, configure } from 'enzyme'
 import Headline from './index'
-import { findByTestAtrr } from '../../Util'
+import { findByTestAtrr, checkProps } from '../../Util'
+
 import Adapter from 'enzyme-adapter-react-16';
 
 const setUp = (props={}) => {
@@ -11,6 +12,24 @@ const setUp = (props={}) => {
 configure({adapter: new Adapter()});
 
 describe('Headline Compo', () => {
+
+    describe('checking propTypes', () => {
+        test('should not throw a warning', () => {
+
+            const expectedProps = {
+                hearder: 'lalala',
+                desc: 'i love you',
+                tempArr: [{
+                    fName: 'j',
+                    lName: 'P',
+                    email: false
+                }]
+            }
+            const propsErr = checkProps(Headline, expectedProps);
+            expect(propsErr).toBeUndefined()
+        })
+
+    })
 
     describe('have props', () => {
         let wrapper
@@ -43,7 +62,8 @@ describe('Headline Compo', () => {
             const component = findByTestAtrr(wrapper, 'headlineCompo')
             expect (component.length).toBe(0)
             })
-            
+
     })
 
 })
+
