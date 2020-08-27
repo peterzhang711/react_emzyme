@@ -4,9 +4,7 @@ import PropTypes from 'prop-types'
 class ShareButton extends Component {
 
     submitEvent(){
-        // console.log('onclick works')
         if(this.props.emitEvent){
-            // console.log('onclick works')
             this.props.emitEvent()
         }
     }
