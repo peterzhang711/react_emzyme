@@ -6,7 +6,7 @@ class Headline extends Component {
         super(props)
     }
     render (){
-        const { header, desc} = this.props
+        const { header, desc, tempArr} = this.props
         if(!header) {
             return null
         }
