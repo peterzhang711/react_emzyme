@@ -32,7 +32,7 @@ class App extends Component{
       emitEvent: this.fetch
     }
     return (
-      <div className="App">
+      <div className="App" data-test='appCompo'>
         <Header />
         <Headline header='Posts' desc='click button to render posts' tempArr={tempArr} />
         <ShareButton {...configButton} />  
