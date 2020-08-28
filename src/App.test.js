@@ -3,8 +3,9 @@ import React from 'react'
 import { shallow, configure } from 'enzyme'
 import { findByTestAtrr, testStore } from './Util'
 import Adapter from 'enzyme-adapter-react-16';
-
 configure({adapter: new Adapter()});
+
+
 const setUp = (initialState) => {
     const store = testStore(initialState)
     const wrapper = shallow(<App store={store}/>).childAt(0).dive()
@@ -33,6 +34,13 @@ describe('App Compo', () => {
     it('should render with NO error', () => {
         const component = findByTestAtrr(wrapper, 'appCompo')
         expect(component.length).toBe(1)
+    })
+
+    it('exampleMethod_updateState Method should update state', () => {
+        const classInstance = wrapper.instance()
+        classInstance.exampleMethod_updateState()
+        const newState = classInstance.state.hideBtn
+        expect(newState).toBe(true);
     })
 
 })
